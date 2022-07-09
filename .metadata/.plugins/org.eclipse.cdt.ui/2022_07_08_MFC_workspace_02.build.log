@@ -1,0 +1,10 @@
+17:52:59 **** Incremental Build of configuration Debug for project 2022_07_08_MFC_workspace_02 ****
+make -j8 all 
+arm-none-eabi-size   2022_07_08_MFC_workspace_02.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16460	    120	   1808	  18388	   47d4	2022_07_08_MFC_workspace_02.elf
+Finished building: default.size.stdout
+ 
+
+17:52:59 Build Finished. 0 errors, 0 warnings. (took 610ms)
+
