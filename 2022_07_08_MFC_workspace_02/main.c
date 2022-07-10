@@ -121,17 +121,17 @@ int main(void)
     /* USER CODE BEGIN 3 */
 	  if(flag == 1)
 	  {
-		  if(rx == '1')
+		  if(led1 == 1)
 		  {
 			  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
 		  }
 
-		  if(rx == '2') // '' 이게 맞음
+		  if(led2 == 1) // '' 이게 맞음
 		  {
 			  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
 		  }
 
-		  if(rx == '3')
+		  if(led3 == 1)
 		  {
 			  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
 		  }
@@ -145,6 +145,7 @@ int main(void)
 		  memset(tx_buf, 0, sizeof(tx_buf));
 		  memset(rx_buf, 0, sizeof(rx_buf));
 		  flag = 0;
+		  HAL_UART_Receive_IT(&huart3, &rx, 1);
 	  }
   }
   /* USER CODE END 3 */
@@ -218,44 +219,22 @@ static void MX_NVIC_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 	if (huart->Instance == USART3) {
-		flag = 1;
-		HAL_UART_Receive_IT(&huart3, &rx, 1);
+		if((rx == '\n') && (rx_buf[bufindex - 1] == '>')){
+			char *p;
+			if ((p = strstr((char*) rx_buf, "<LED3")) != 0) {
+			led1 = *(p + 5) - '0';
+			led2 = *(p + 6) - '0';
+			led3 = *(p + 7) - '0';
+			bufindex = 0;
+			flag = 1;
+			}
+		}
+		else if(bufindex < 20) {
+			rx_buf[bufindex++] = rx;
+			HAL_UART_Receive_IT(&huart3, &rx, 1);
+		}
 	}
 }
-/*void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
-	if (huart->Instance == USART3) {
-		HAL_UART_Transmit(&huart3, (uint8_t*) buf, sizeof(buf), 100);
-		if (rx == '\n') {
-			buf[bufindex] = 0;
-			char *p;
-			if ((p = strstr((char*) buf, "<LED3")) != 0) {
-				led1 = *(p + 5) - '0';
-				led2 = *(p + 6) - '0';
-				led3 = *(p + 7) - '0';
-				flag = 1;
-			}
-			memset(buf, 0, sizeof(buf));
-			bufindex = 0;
-		} else {
-			if (bufindex < 20)
-				buf[bufindex++] = rx;
-		}
-		HAL_UART_Receive_IT(&huart3, rx, 1);
-	}
-}*/
-/*
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
-{
-	if(huart -> Instance == USART3)
-	{
-		if(rx >= 'A' && rx <= 'Z')
-			rx += 32;
-		else if(rx >= 'a' && rx <= 'z')
-			rx -= 32;
-		HAL_UART_Transmit(&huart3, &rx, 1, 100);
-	}
-	HAL_UART_Receive_IT(&huart3, &rx, 1);
-}*/
 /* USER CODE END 4 */
 
 /**
