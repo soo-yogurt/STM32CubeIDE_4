@@ -126,7 +126,7 @@ int main(void)
 			  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
 		  }
 
-		  if(led2 == 1) // '' 이게 맞음
+		  if(led2 == 1)
 		  {
 			  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
 		  }
