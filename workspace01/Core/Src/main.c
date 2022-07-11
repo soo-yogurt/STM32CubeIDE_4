@@ -233,7 +233,6 @@ void ToggleLED_MFC() {
 	if (led2 == 1) {
 		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_7);
 	}
-
 	if (led3 == 1) {
 		HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
 	}
