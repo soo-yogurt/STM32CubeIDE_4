@@ -412,3 +412,30 @@ java.lang.Exception: The project description file (.project) for 'workspace01' i
 
 !ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-07-11 09:17:28.069
 !MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2022-07-11 22:44:10.585 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-07-11 22:45:04.447
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-07-11 22:45:04.570
+!MESSAGE Log4j initialized with config file C:\workspace_stm32\STM32CubeIDE_MFC\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-07-11 22:45:11.812
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2022-07-12 01:12:43.890
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 0 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2022-07-12 01:12:43.891
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2022-07-12 01:12:43.893
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 0 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2022-07-12 01:12:43.893
+!MESSAGE Existing sessions are:
